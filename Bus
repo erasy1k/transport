@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+public class Bus {
+    private String busNumber;
+    private String driverName;
+    private int capacity;
+    private boolean available;
+
+    // Конструктор
+    public Bus(String busNumber, String driverName, int capacity, boolean available) {
+        this.busNumber = busNumber;
+        this.driverName = driverName;
+        this.capacity = capacity;
+        this.available = available;
+    }
+
+    // Геттеры и сеттеры
+    public String getBusNumber() {
+        return busNumber;
+    }
+
+    public void setBusNumber(String busNumber) {
+        this.busNumber = busNumber;
+    }
+
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    // Метод для отображения информации об автобусе
+    public void displayInfo() {
+        System.out.println("Номер автобуса: " + busNumber + ", Водитель: " + driverName +
+                ", Вместимость: " + capacity + ", Доступность: " + available);
+    }
+}

@@ -1,0 +1,44 @@
+package com.transport;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        // Создание автобусов
+        Bus bus1 = new Bus("BUS001", "Иван Иванов", 40, true);
+        Bus bus2 = new Bus("BUS002", "Петр Петров", 50, false);
+        Bus bus3 = new Bus("BUS003", "Сергей Сергеев", 60, true);
+
+        // Создание пассажиров
+        Commuter commuter1 = new Commuter("Алиса", "CMT001", "123-456-7890");
+        Commuter commuter2 = new Commuter("Боб", "CMT002", "987-654-3210");
+
+        // Служба транспорта
+        TransportService service = new TransportService();
+        service.addBus(bus1);
+        service.addBus(bus2);
+        service.addBus(bus3);
+        
+        // Отобразить все автобусы
+        service.displayAllBuses();
+
+        // Отобразить информацию о пассажирах
+        commuter1.displayInfo();
+        commuter2.displayInfo();
+
+        // Сравнение автобусов по вместимости
+        if (bus1.getCapacity() > bus2.getCapacity()) {
+            System.out.println("\nАвтобус 1 имеет больше вместимости, чем Автобус 2");
+        } else {
+            System.out.println("\nАвтобус 2 имеет больше вместимости, чем Автобус 1");
+        }
+
+        // Поиск автобуса по номеру
+        Bus searchResult = service.findBusByNumber("BUS002");
+        if (searchResult != null) {
+            System.out.println("\nНайден автобус:");
+            searchResult.displayInfo();
+        } else {
+            System.out.println("\nАвтобус не найден");
+        }
+    }
+}

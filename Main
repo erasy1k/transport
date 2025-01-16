@@ -1,14 +1,15 @@
+package com.transport;
+
 public class Main {
     public static void main(String[] args) {
-
         // Создание автобусов
-        Bus bus1 = new Bus("BUS001", "Султан", 40, true);
-        Bus bus2 = new Bus("BUS002", "Ерасыл", 50, false);
-        Bus bus3 = new Bus("BUS003", "Нурик", 60, true);
+        Bus bus1 = new Bus("BUS001", "Габитов Багжан", 40, true);
+        Bus bus2 = new Bus("BUS002", "Адилхан Ернар", 50, false);
+        Bus bus3 = new Bus("BUS003", "Осербай Димаш", 60, true);
 
         // Создание пассажиров
-        Commuter commuter1 = new Commuter("Баха", "OPG-001", "8747-404-15-05");
-        Commuter commuter2 = new Commuter("Бага", "OPG-002", "8747-908-44-04");
+        Commuter commuter1 = new Commuter("Бахытжан", "OPG-001", "077-017-770");
+        Commuter commuter2 = new Commuter("Багдаулет", "OPG-002", "099-149-279");
 
         // Служба транспорта
         TransportService service = new TransportService();
@@ -16,27 +17,27 @@ public class Main {
         service.addBus(bus2);
         service.addBus(bus3);
 
-        // Отобразить все автобусы
+        // Вывод всех автобусов
         service.displayAllBuses();
 
-        // Отобразить информацию о пассажирах
-        commuter1.displayInfo();
-        commuter2.displayInfo();
-
-        // Сравнение автобусов по вместимости
-        if (bus1.getCapacity() > bus2.getCapacity()) {
-            System.out.println("\nАвтобус 1 имеет больше вместимости, чем Автобус 2");
-        } else {
-            System.out.println("\nАвтобус 2 имеет больше вместимости, чем Автобус 1");
+        // Фильтрация доступных автобусов
+        System.out.println("\nAvailable buses:");
+        for (Bus bus : service.filterAvailableBuses()) {
+            bus.displayInfo();
         }
 
-        // Поиск автобуса по номеру
-        Bus searchResult = service.findBusByNumber("BUS002");
-        if (searchResult != null) {
-            System.out.println("\nНайден автобус:");
-            searchResult.displayInfo();
+        // Сортировка автобусов по вместимости
+        System.out.println("\nBuses sorted by capacity:");
+        service.sortBusesByCapacity();
+        service.displayAllBuses();
+
+        // Поиск автобуса
+        Bus foundBus = service.findBusByNumber("BUS002");
+        if (foundBus != null) {
+            System.out.println("\nFound bus:");
+            foundBus.displayInfo();
         } else {
-            System.out.println("\nАвтобус не найден");
+            System.out.println("\nBus not found.");
         }
     }
 }
